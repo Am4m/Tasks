@@ -30,7 +30,7 @@ class TaskList extends StatelessWidget {
               itemBuilder: (context, index) {
                 var vault = vaults[index];
                 return Container(
-                  margin: const EdgeInsets.only(top: 10, left: 10, right: 10),
+                  margin: const EdgeInsets.only(top: 5, left: 5, right: 5),
                   child: TaskCard(vault: vault),
                 );
               },

@@ -61,30 +61,30 @@ class _TaskTableState extends State<TaskTable> {
       ),
       body: LayoutBuilder(
         builder: (context, constraints) {
-          return SingleChildScrollView(
-            padding: const EdgeInsets.all(16.0),
-            child: ConstrainedBox(
-              constraints: BoxConstraints.expand(
-                width: constraints.maxWidth,
-                height: constraints.maxHeight,
-              ),
-              child: DataTable(
-                columnSpacing: 20,
-                sortAscending: _sortAscending,
-                sortColumnIndex: _sortColumnIndex,
-                columns: [
-                  _buildDataColumn("ID"),
-                  _buildDataColumn("Task"),
-                  _buildDataColumn("Status"),
-                  _buildDataColumn("Priority"),
-                  const DataColumn(
-                    // Additional column for delete button
-                    label: Text(
-                      "",
+          return Container(
+            alignment: Alignment.topCenter,
+            child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              padding: const EdgeInsets.all(16.0),
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: DataTable(
+                  columnSpacing: 5,
+                  sortAscending: _sortAscending,
+                  sortColumnIndex: _sortColumnIndex,
+                  columns: [
+                    _buildDataColumn("ID"),
+                    _buildDataColumn("Task"),
+                    _buildDataColumn("Status"),
+                    _buildDataColumn("Priority"),
+                    const DataColumn(
+                      label: Text(
+                        "",
+                      ),
                     ),
-                  ),
-                ],
-                rows: _buildDataRows(sortedTasks),
+                  ],
+                  rows: _buildDataRows(sortedTasks),
+                ),
               ),
             ),
           );
@@ -159,7 +159,10 @@ class _TaskTableState extends State<TaskTable> {
                         color: Color(priority.colorValue),
                       ),
                       const SizedBox(width: 8),
-                      Text(priority.text),
+                      Text(
+                        priority.text,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ],
                   ),
                 );
